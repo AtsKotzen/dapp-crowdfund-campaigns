@@ -1,5 +1,84 @@
 ﻿# dapp-crowdfund-campaigns
 
+## 1. CampaignIndex Component
+
+**Overview:**
+- The `CampaignIndex` component is the initial screen of the application, displaying a list of deployed campaigns.
+- It fetches the details of each campaign, including the campaign name and manager name.
+
+**Features:**
+1. Displays a list of campaigns with their names, manager names, and a link to view each project.
+2. Provides a button to create a new project.
+
+---
+
+## 2. CampaignShow Component
+
+**Overview:**
+- The `CampaignShow` component displays detailed information about a specific campaign, including its summary and a contribution form.
+
+**Features:**
+1. Displays key information about the campaign, such as manager name, minimum contribution, balance, etc.
+2. Allows users to contribute to the campaign using the `ContributeForm` component.
+3. Provides a button to view the spending requests associated with the campaign.
+
+---
+
+## 3. CampaignNew Component
+
+**Overview:**
+- The `CampaignNew` component allows users to create a new campaign by providing details such as the project name, manager name, and minimum contribution.
+
+**Features:**
+1. Form for users to input project details.
+2. Handles the creation of a new campaign through the factory contract.
+
+---
+
+## 4. RequestIndex Component
+
+**Overview:**
+- The `RequestIndex` component displays a list of spending requests associated with a specific campaign.
+
+**Features:**
+1. Lists all spending requests with details like ID, description, value, recipient, approvals, etc.
+2. Provides a button to add a new spending request.
+
+---
+
+## 5. RequestNew Component
+
+**Overview:**
+- The `RequestNew` component allows users to create a new spending request for a specific campaign.
+
+**Features:**
+1. Form for users to input spending request details.
+2. Handles the creation of a new spending request through the `campaign` contract.
+
+---
+
+## 6. ContributeForm Component
+
+**Overview:**
+- The `ContributeForm` component provides a form for users to contribute to a specific campaign.
+
+**Features:**
+1. Form for users to input the amount they want to contribute.
+2. Handles the contribution through the `campaign` contract.
+
+---
+
+## 7. RequestRow Component
+
+**Overview:**
+- The `RequestRow` component represents a row in the table displaying spending requests in the `RequestIndex` component.
+
+**Features:**
+1. Displays details of a spending request, including ID, description, value, recipient, approvals, etc.
+2. Provides buttons to approve and finalize spending requests.
+
+---
+
 ## Campaign Smart Contract Documentation
 
 ## Overview
