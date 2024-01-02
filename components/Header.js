@@ -7,14 +7,14 @@ export default () => {
     <Menu style={{ marginTop: 10 }}>
       <Link route="/">
         <a className="item">
-          Growecosystems
+          GreenPill Brasil
         </a>
       </Link>
 
       <Menu.Menu position="right">
       <Link route="/">
         <a className="item">
-          Campaigns
+          Projetos
         </a>
       </Link>
 

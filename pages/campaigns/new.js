@@ -8,6 +8,8 @@ import { Router } from "../../routes";
 class CampaignNew extends Component {
   state = {
     minimumContribution: "",
+    name: "",
+    managerName: "",
     errorMessage: "",
     loading: false,
   };
@@ -19,8 +21,10 @@ class CampaignNew extends Component {
     try {
       const accounts = await web3.eth.getAccounts();
       const minimumAmount = parseFloat(this.state.minimumContribution)
+      const name = this.state.name;
+      const managerName = this.state.managerName;
       await factory.methods
-        .createCampaign(web3.utils.toWei(minimumAmount , "ether"))
+        .createCampaign(web3.utils.toWei(minimumAmount , "ether"), name, managerName)
         .send({
           from: accounts[0],
         });
@@ -35,13 +39,34 @@ class CampaignNew extends Component {
   render() {
     return (
       <Layout>
-        <h3>Create a Campaign</h3>
+        <h3>Criar Projeto</h3>
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
           <Form.Field>
-            <label>Minimum Contribution</label>
+            <label>Nome do Projeto</label>
+            <Input
+              placeholder="Digite o nome do Projeto"
+              value={this.state.name}
+              onChange={(event) =>
+                this.setState({ name: event.target.value })
+              }
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Nome do Responsável</label>
+            <Input
+              placeholder="Digite o seu nome"
+              value={this.state.managerName}
+              onChange={(event) =>
+                this.setState({ managerName: event.target.value })
+              }
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Contribuição mínima</label>
             <Input
               label="ETH"
               labelPosition="right"
+              placeholder="Digite o valor mínimo de contribuição(ETH)"
               value={this.state.minimumContribution}
               onChange={(event) =>
                 this.setState({ minimumContribution: event.target.value })
@@ -50,7 +75,7 @@ class CampaignNew extends Component {
           </Form.Field>
           <Message error header="Oops!" content={this.state.errorMessage} />
           <Button loading={this.state.loading} primary>
-            Create!
+            Salvar
           </Button>
         </Form>
       </Layout>

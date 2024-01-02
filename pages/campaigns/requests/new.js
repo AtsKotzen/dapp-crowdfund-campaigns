@@ -46,28 +46,33 @@ class RequestNew extends Component {
         <Link route={`/campaigns/${this.props.address}/requests`}>
           <a>Back</a>
         </Link>
-        <h3>Create a Request</h3>
+        <h3>Nova demanda</h3>
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
           <Form.Field>
-            <label>Description</label>
+            <label>Descrição</label>
             <Input
               value={this.state.description}
+              placeholder="Descrição do produto / serviço"
               onChange={(event) =>
                 this.setState({ description: event.target.value })
               }
             />
           </Form.Field>
           <Form.Field>
-            <label>Value in Ether</label>
+            <label>Custo</label>
             <Input
               value={this.state.value}
+              placeholder="Custo da demanda"
+              label="ETH"
+              labelPosition="right"
               onChange={(event) => this.setState({ value: event.target.value })}
             />
           </Form.Field>
           <Form.Field>
-            <label>Recipient</label>
+            <label>Recebedor</label>
             <Input
               value={this.state.recipient}
+              placeholder="Cole aqui o endereço da carteira"
               onChange={(event) =>
                 this.setState({ recipient: event.target.value })
               }
@@ -75,7 +80,7 @@ class RequestNew extends Component {
           </Form.Field>
           <Message error header="Oops!" content={this.state.errorMessage} />
           <Button primary loading={this.state.loading}>
-            Create!
+            Salvar
           </Button>
         </Form>
       </Layout>

@@ -10,8 +10,8 @@ class CampaignShow extends Component {
   static async getInitialProps(props) {
     const campaign = Campaign(props.query.address);
 
-    const summary = await campaign.methods.getSummary().call();
-
+    const summary = await campaign.methods.getSummary().call();    
+    
     return {
       address: props.query.address,
       minimumContribution: summary[0],
@@ -19,6 +19,8 @@ class CampaignShow extends Component {
       requestsCount: summary[2],
       approversCount: summary[3],
       manager: summary[4],
+      campaignName: summary[5],
+      managerName: summary[6]
     };
   }
 
@@ -29,39 +31,39 @@ class CampaignShow extends Component {
       minimumContribution,
       requestsCount,
       approversCount,
-    } = this.props;
+      managerName          
+      } = this.props;
 
-    const items = [
+    const items = [      
       {
-        header: manager,
-        meta: "Address of Manager",
-        description:
-          "The manager created this campaign and can create requests to withdraw money",
+        header: managerName,
+        meta: "Responsável",
+        description: "Endereço: " + manager,
         style: { overflowWrap: "break-word" },
       },
       {
         header: web3.utils.fromWei(minimumContribution, "ether"),
-        meta: "Minimum Contribution (ETH)",
+        meta: "Valor mínimo (ETH)",
         description:
-          "You must contribute at least this much wei to become an approver",
+          "Valor mínimo de contribuição para se tornar um aprovador.",
       },
       {
         header: parseInt(requestsCount),
-        meta: "Number of Requests",
+        meta: "Demandas",
         description:
-          "A request tries to withdraw money from the contract. Requests must be approved by approvers",
+          "As Demandas são registros de produtos ou serviços necessários. A liberação dos recursos está sujeita à aprovação dos contribuidores.",
       },
       {
         header: parseInt(approversCount),
-        meta: "Number of Approvers",
+        meta: "Doadores / Aprovadores",
         description:
-          "Number of people who have already donated to this campaign",
+          "Pessoas que já doaram para esse projeto e podem aprovar as Demandas",
       },
       {
         header: web3.utils.fromWei(balance, "ether"),
-        meta: "Campaign Balance (ETH)",
+        meta: "Saldo (ETH)",
         description:
-          "The balance is how much money this campaign has left to spend.",
+          "O Saldo é a quantidade de fundos disponíveis para pagar as demandas.",
       },
     ];
 
@@ -71,7 +73,7 @@ class CampaignShow extends Component {
   render() {
     return (
       <Layout>
-        <h3>Campaign Details</h3>
+        <h3>{this.props.campaignName}</h3>
         <Grid>
           <Grid.Row>
             <Grid.Column width={10}>{this.renderCards()}</Grid.Column>
@@ -84,7 +86,7 @@ class CampaignShow extends Component {
             <Grid.Column>
               <Link route={`/campaigns/${this.props.address}/requests`}>
                 <a>
-                  <Button primary>View Requests</Button>
+                  <Button primary>Ver Demandas</Button>
                 </a>
               </Link>
             </Grid.Column>

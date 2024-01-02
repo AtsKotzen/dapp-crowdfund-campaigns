@@ -43,14 +43,14 @@ class RequestRow extends Component {
         <Cell>
           {request.complete ? null : (
             <Button color="green" basic onClick={this.onApprove}>
-              Approve
+              Approvar
             </Button>
           )}
         </Cell>
         <Cell>
           {request.complete ? null : (
             <Button color="teal" basic onClick={this.onFinalize}>
-              Finalize
+              Finalizar
             </Button>
           )}
         </Cell>
