@@ -1,5 +1,10 @@
 ﻿﻿# dapp-crowdfund-campaigns
 
+## PT-BR
+O app é um projeto de crowdfunding descentralizado baseado na blockchain Ethereum. Ele permite que os usuários criem e participem de campanhas de arrecadação de fundos, gerenciando os gastos e as aprovações dos doadores. O app consiste em dois contratos inteligentes: CampaignFactory e Campaign, que são responsáveis por criar e gerenciar as campanhas, respectivamente. O app também possui uma interface web que usa React e Next.js para interagir com os contratos.
+## EN
+The app is a decentralized crowdfunding project based on the Ethereum blockchain. It allows users to create and participate in fundraising campaigns, managing expenses and donor approvals. The app consists of two smart contracts: CampaignFactory and Campaign, which are responsible for creating and managing campaigns, respectively. The app also has a web interface that uses React and Next.js to interact with the contracts.
+
 ## 1. CampaignIndex Component
 
 **Overview:**
